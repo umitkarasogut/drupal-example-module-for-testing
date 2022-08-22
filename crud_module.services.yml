@@ -1,0 +1,4 @@
+services:
+  crud_module.crud_service:
+    class: Drupal\crud_module\Service\CrudService
+    arguments: [ '@entity_type.manager' ]

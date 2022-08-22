@@ -1,0 +1,5 @@
+name: Crud Module
+type: module
+description: 'Crud Module'
+package: Custom
+core_version_requirement: ^8 || ^9
