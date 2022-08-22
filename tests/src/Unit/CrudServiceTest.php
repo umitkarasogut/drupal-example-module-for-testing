@@ -2,6 +2,7 @@
 
 namespace Drupal\crud_module\tests\Unit;
 
+use Drupal\crud_module\Entity\Product;
 use Drupal\crud_module\Service\CrudService;
 use Drupal\KernelTests\Core\Entity\EntityKernelTestBase;
 
@@ -28,6 +29,7 @@ class CrudServiceTest extends EntityKernelTestBase {
   public function test_user_can_find_product() {
     $product = $this->service->find($this->exampleProductId);
 
+    $this->assertInstanceOf(Product::class, $product);
     $this->assertEquals($this->exampleProduct['name'], $product->get('name')->value);
     $this->assertEquals($this->exampleProduct['price'], $product->get('price')->value);
     //$this->assertEquals($this->exampleProduct, $product->toArray());
@@ -37,7 +39,8 @@ class CrudServiceTest extends EntityKernelTestBase {
     $products = $this->service->findAll();
     $this->assertIsArray($products);
 
-    $product = reset($products);
+    $product = reset($products);  # or $product = $products[0];
+    $this->assertInstanceOf(Product::class, $product);
     $this->assertEquals($this->exampleProduct['name'], $product->get('name')->value);
     $this->assertEquals($this->exampleProduct['price'], $product->get('price')->value);
   }
