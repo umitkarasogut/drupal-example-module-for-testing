@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\crud_module\tests\Unit;
+namespace Drupal\crud_module\tests\Kernel;
 
 use Drupal\crud_module\{Entity\Product, Service\CrudService};
 use Drupal\KernelTests\Core\Entity\EntityKernelTestBase;
