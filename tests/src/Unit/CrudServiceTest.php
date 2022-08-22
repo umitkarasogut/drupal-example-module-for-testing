@@ -2,8 +2,7 @@
 
 namespace Drupal\crud_module\tests\Unit;
 
-use Drupal\crud_module\Entity\Product;
-use Drupal\crud_module\Service\CrudService;
+use Drupal\crud_module\{Entity\Product, Service\CrudService};
 use Drupal\KernelTests\Core\Entity\EntityKernelTestBase;
 
 class CrudServiceTest extends EntityKernelTestBase {
@@ -59,4 +58,5 @@ class CrudServiceTest extends EntityKernelTestBase {
     $product = $this->service->find($this->exampleProductId);
     $this->assertEquals(NULL, $product);
   }
+
 }
