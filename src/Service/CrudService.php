@@ -27,7 +27,7 @@ class CrudService extends ServiceProviderBase {
     }
 
     public function update($id, $data) {
-        $product = $this->entityStorage->find($id);
+        $product = $this->find($id);
         foreach ($data as $key => $value) {
             $product->set($key, $value);
         }
