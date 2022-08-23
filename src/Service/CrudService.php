@@ -8,26 +8,26 @@ use Drupal\Core\Entity\{EntityTypeManager, EntityStorageBase};
 
 class CrudService extends ServiceProviderBase {
 
-    private EntityStorageBase $entityTypeManager;
+    private EntityStorageBase $entityStorage;
 
     public function __construct(EntityTypeManager $entityTypeManager) {
-        $this->entityTypeManager = $entityTypeManager->getStorage('product');
+        $this->entityStorage = $entityTypeManager->getStorage('product');
     }
 
     public function find($id) {
-        return $this->entityTypeManager->load($id);
+        return $this->entityStorage->load($id);
     }
 
     public function findAll() {
-        return $this->entityTypeManager->loadMultiple();
+        return $this->entityStorage->loadMultiple();
     }
 
     public function create($data) {
-        return $this->entityTypeManager->create($data)->save();
+        return $this->entityStorage->create($data)->save();
     }
 
     public function update($id, $data) {
-        $product = $this->find($id);
+        $product = $this->entityStorage->find($id);
         foreach ($data as $key => $value) {
             $product->set($key, $value);
         }
@@ -35,7 +35,7 @@ class CrudService extends ServiceProviderBase {
     }
 
     public function delete($id) {
-        $this->entityTypeManager->load($id)->delete();
+        $this->entityStorage->load($id)->delete();
     }
 
 }
